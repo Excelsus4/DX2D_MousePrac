@@ -13,5 +13,7 @@ private:
 	Sprite* backGround;
 
 	class Player* player;
-	vector<class Marker*> markers;
+	vector<class ILineVertex*> markers;
+
+	class SimpleLine* lineRender;
 };

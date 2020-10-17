@@ -1,15 +1,16 @@
 #pragma once
+#include "Renders/ILineVertex.h"
 
-class Marker {
+class Marker : public ILineVertex{
 public:
 	Marker(wstring shaderFile, D3DXVECTOR2 start);
 	virtual ~Marker();
 
-	void Update(D3DXMATRIX& V, D3DXMATRIX& P);
-	void Render();
+	virtual void Update(D3DXMATRIX& V, D3DXMATRIX& P) override;
+	virtual void Render() override;
 
 	Clip* GetClip() { return clip; }
-	D3DXVECTOR2 Position() { return position; }
+	virtual D3DXVECTOR2 Position() const override { return position; }
 
 private:
 	Clip* clip;

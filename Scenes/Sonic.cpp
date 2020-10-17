@@ -3,6 +3,7 @@
 #include "Objects/Player.h"
 #include "Objects/Marker.h"
 #include "Viewer/Freedom.h"
+#include "Renders/SimpleLine.h"
 
 Sonic::Sonic(SceneValues * values): Scene(values)
 {
@@ -15,15 +16,18 @@ Sonic::Sonic(SceneValues * values): Scene(values)
 
 	((Freedom*)(values->MainCamera))->Position(0, 0);
 
+	wstring lineShader = Shaders + L"015_Bounding.fx";
+	lineRender = new SimpleLine(lineShader, &markers);
 }
 
 Sonic::~Sonic()
 {
-	for (Marker* marker : markers)
+	for (ILineVertex* marker : markers)
 		SAFE_DELETE(marker);
 
 	SAFE_DELETE(player);
 	SAFE_DELETE(backGround);
+	SAFE_DELETE(lineRender);
 }
 
 void Sonic::Update()
@@ -43,10 +47,13 @@ void Sonic::Update()
 		D3DXVECTOR2 position = mouse + camera;
 
 		markers.push_back(new Marker(Shaders + L"009_Sprite.fx", position));
+		lineRender->MapVertex();
 	}
 	
-	for (Marker* marker : markers)
+	for (ILineVertex* marker : markers)
 		marker->Update(V, P);
+
+	lineRender->Update(V, P);
 }
 
 void Sonic::Render()
@@ -62,6 +69,8 @@ void Sonic::Render()
 	backGround->Render();
 	//player->Render();
 
-	for (Marker* marker : markers)
+	for (ILineVertex* marker : markers)
 		marker->Render();
+
+	lineRender->Render();
 }

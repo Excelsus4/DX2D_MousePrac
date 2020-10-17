@@ -78,6 +78,9 @@
     <ClCompile Include="Objects\Marker.cpp">
       <Filter>Objects</Filter>
     </ClCompile>
+    <ClCompile Include="Renders\SimpleLine.cpp">
+      <Filter>Renders</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Systems\Keyboard.h">
@@ -161,6 +164,12 @@
     </ClInclude>
     <ClInclude Include="Objects\Marker.h">
       <Filter>Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Renders\SimpleLine.h">
+      <Filter>Renders</Filter>
+    </ClInclude>
+    <ClInclude Include="Renders\ILineVertex.h">
+      <Filter>Renders</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

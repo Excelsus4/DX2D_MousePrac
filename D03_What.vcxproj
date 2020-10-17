@@ -153,6 +153,7 @@
     <ClCompile Include="Renders\Clip.cpp" />
     <ClCompile Include="Renders\Rect.cpp" />
     <ClCompile Include="Renders\Shader.cpp" />
+    <ClCompile Include="Renders\SimpleLine.cpp" />
     <ClCompile Include="Renders\Sprite.cpp" />
     <ClCompile Include="Program.cpp" />
     <ClCompile Include="Scenes\Sonic.cpp" />
@@ -183,8 +184,10 @@
     <ClInclude Include="Objects\Player.h" />
     <ClInclude Include="Renders\Animation.h" />
     <ClInclude Include="Renders\Clip.h" />
+    <ClInclude Include="Renders\ILineVertex.h" />
     <ClInclude Include="Renders\Rect.h" />
     <ClInclude Include="Renders\Shader.h" />
+    <ClInclude Include="Renders\SimpleLine.h" />
     <ClInclude Include="Renders\Sprite.h" />
     <ClInclude Include="Scenes\Scene.h" />
     <ClInclude Include="Scenes\Sonic.h" />
