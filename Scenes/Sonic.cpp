@@ -51,6 +51,8 @@ void Sonic::Update()
 			mouse.y = (mouse.y - (float)Height*0.5f)*-1.0f;
 
 			if (((Marker*)a)->GetClip()->GetSprite()->AABB(mouse)) {
+				if (selected != nullptr)
+					selected->isSelected(false);
 				a->isSelected(true);
 				selected = a;
 				selectedPrevPos = mouse;
