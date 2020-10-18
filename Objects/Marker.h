@@ -11,7 +11,10 @@ public:
 
 	Clip* GetClip() { return clip; }
 	virtual D3DXVECTOR2 Position() const override { return position; }
+	virtual void Position(D3DXVECTOR2 vec) override;
 
+	virtual void isSelected(bool s) override;
+	virtual bool isSelected() const override;
 private:
 	Clip* clip;
 
@@ -19,4 +22,5 @@ private:
 	D3DXVECTOR2 scale;
 	D3DXVECTOR3 rotation;
 
+	bool isS;
 };

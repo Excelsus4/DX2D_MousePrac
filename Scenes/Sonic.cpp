@@ -18,6 +18,8 @@ Sonic::Sonic(SceneValues * values): Scene(values)
 
 	wstring lineShader = Shaders + L"015_Bounding.fx";
 	lineRender = new SimpleLine(lineShader, &markers);
+	selected = nullptr;
+	dragging = false;
 }
 
 Sonic::~Sonic()
@@ -38,8 +40,51 @@ void Sonic::Update()
 	backGround->Update(V, P);
 	player->Update(V, P);
 
+	if (Mouse->Down(0)) {
+		// if selection is on and its near the selected point, then start drag...
+		// else, then try to select nearest point.
+		ILineVertex* prev = selected;
+		selected = nullptr;
+		for (auto a : markers) {
+			D3DXVECTOR2 mouse = Mouse->Position();
+			mouse.x = mouse.x - (float)Width*0.5f;
+			mouse.y = (mouse.y - (float)Height*0.5f)*-1.0f;
+
+			if (((Marker*)a)->GetClip()->GetSprite()->AABB(mouse)) {
+				a->isSelected(true);
+				selected = a;
+				selectedPrevPos = mouse;
+				dragging = true;
+			}
+			else {
+				a->isSelected(false);
+			}
+		}
+	}
+	else if (Mouse->Press(0)) {
+		// if dragging is on, then update the drag
+		if (dragging) {
+			D3DXVECTOR2 mouse = Mouse->Position();
+			mouse.x = mouse.x - (float)Width*0.5f;
+			mouse.y = (mouse.y - (float)Height*0.5f)*-1.0f;
+
+			D3DXVECTOR2 delta = mouse - selectedPrevPos;
+			selectedPrevPos = mouse;
+
+			selected->Position(selected->Position() + delta);
+			lineRender->MapVertex();
+		}
+
+	}
+	else if (Mouse->Up(0)) {
+		// if dragging is on, then release the drag
+		if (dragging)
+			dragging = false;
+	}
+
 	if (Mouse->DoubleClick(0))
 	{
+		// Only active when selection is not on...
 		D3DXVECTOR2 mouse = Mouse->Position();
 		mouse.x = mouse.x - (float)Width*0.5f;
 		mouse.y = (mouse.y - (float)Height*0.5f)*-1.0f;

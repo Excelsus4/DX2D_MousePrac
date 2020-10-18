@@ -30,3 +30,20 @@ void Marker::Render()
 {
 	clip->Render();
 }
+
+void Marker::Position(D3DXVECTOR2 vec)
+{
+	position = vec;
+	clip->Position(position);
+}
+
+void Marker::isSelected(bool s)
+{
+	clip->DrawBound(s);
+	isS = s;
+}
+
+bool Marker::isSelected() const
+{
+	return isS;
+}

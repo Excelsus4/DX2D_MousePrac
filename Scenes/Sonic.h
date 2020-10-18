@@ -14,6 +14,9 @@ private:
 
 	class Player* player;
 	vector<class ILineVertex*> markers;
+	class ILineVertex* selected;
+	D3DXVECTOR2 selectedPrevPos;
+	bool dragging;
 
 	class SimpleLine* lineRender;
 };
