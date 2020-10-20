@@ -12,14 +12,19 @@ Sonic::Sonic(SceneValues * values): Scene(values)
 	backGround = new Sprite(Textures + L"Sonic.png", shaderFile);
 	backGround->Position(0, 0);
 
-	player = new Player(D3DXVECTOR2(130, 140), D3DXVECTOR2(2.5f, 2.5f));
+	player = new Player(D3DXVECTOR2(130, 140), D3DXVECTOR2(1, 1));
 
 	((Freedom*)(values->MainCamera))->Position(0, 0);
+
+	markers.push_back(new Marker(Shaders + L"009_Sprite.fx", D3DXVECTOR2(-380, -280)));
+	markers.push_back(new Marker(Shaders + L"009_Sprite.fx", D3DXVECTOR2( 380, -280)));
 
 	wstring lineShader = Shaders + L"015_Bounding.fx";
 	lineRender = new SimpleLine(lineShader, &markers);
 	selected = nullptr;
 	dragging = false;
+
+	lineRender->MapVertex();
 }
 
 Sonic::~Sonic()
@@ -38,7 +43,7 @@ void Sonic::Update()
 	D3DXMATRIX P = values->Projection;
 
 	backGround->Update(V, P);
-	player->Update(V, P);
+	player->FixedUpdate(&markers);
 
 	if (Mouse->Down(0)) {
 		// if selection is on and its near the selected point, then start drag...
@@ -101,6 +106,7 @@ void Sonic::Update()
 		marker->Update(V, P);
 
 	lineRender->Update(V, P);
+	player->Update(V, P);
 }
 
 void Sonic::Render()
@@ -114,10 +120,11 @@ void Sonic::Render()
 	ImGui::LabelText("Wheel", "%d", Mouse->Wheel());
 
 	backGround->Render();
-	//player->Render();
 
 	for (ILineVertex* marker : markers)
 		marker->Render();
 
 	lineRender->Render();
+
+	player->Render();
 }

@@ -81,6 +81,12 @@
     <ClCompile Include="Renders\SimpleLine.cpp">
       <Filter>Renders</Filter>
     </ClCompile>
+    <ClCompile Include="Utilities\Line.cpp">
+      <Filter>Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="Renders\SingleLine.cpp">
+      <Filter>Renders</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Systems\Keyboard.h">
@@ -169,6 +175,12 @@
       <Filter>Renders</Filter>
     </ClInclude>
     <ClInclude Include="Renders\ILineVertex.h">
+      <Filter>Renders</Filter>
+    </ClInclude>
+    <ClInclude Include="Utilities\Line.h">
+      <Filter>Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="Renders\SingleLine.h">
       <Filter>Renders</Filter>
     </ClInclude>
   </ItemGroup>

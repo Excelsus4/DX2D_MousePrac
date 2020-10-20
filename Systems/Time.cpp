@@ -6,7 +6,7 @@ Time::Time()
 	QueryPerformanceFrequency((LARGE_INTEGER*)&tick);
 	QueryPerformanceCounter((LARGE_INTEGER*)&start);
 
-	last = 0;
+	last = start;
 }
 
 Time::~Time()

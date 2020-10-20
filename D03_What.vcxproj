@@ -154,6 +154,7 @@
     <ClCompile Include="Renders\Rect.cpp" />
     <ClCompile Include="Renders\Shader.cpp" />
     <ClCompile Include="Renders\SimpleLine.cpp" />
+    <ClCompile Include="Renders\SingleLine.cpp" />
     <ClCompile Include="Renders\Sprite.cpp" />
     <ClCompile Include="Program.cpp" />
     <ClCompile Include="Scenes\Sonic.cpp" />
@@ -168,6 +169,7 @@
     <ClCompile Include="Systems\Keyboard.cpp" />
     <ClCompile Include="Systems\Time.cpp" />
     <ClCompile Include="Utilities\BinaryFile.cpp" />
+    <ClCompile Include="Utilities\Line.cpp" />
     <ClCompile Include="Utilities\Math.cpp" />
     <ClCompile Include="Utilities\Path.cpp" />
     <ClCompile Include="Utilities\String.cpp" />
@@ -188,6 +190,7 @@
     <ClInclude Include="Renders\Rect.h" />
     <ClInclude Include="Renders\Shader.h" />
     <ClInclude Include="Renders\SimpleLine.h" />
+    <ClInclude Include="Renders\SingleLine.h" />
     <ClInclude Include="Renders\Sprite.h" />
     <ClInclude Include="Scenes\Scene.h" />
     <ClInclude Include="Scenes\Sonic.h" />
@@ -200,6 +203,7 @@
     <ClInclude Include="Systems\Keyboard.h" />
     <ClInclude Include="Systems\Time.h" />
     <ClInclude Include="Utilities\BinaryFile.h" />
+    <ClInclude Include="Utilities\Line.h" />
     <ClInclude Include="Utilities\Math.h" />
     <ClInclude Include="Utilities\Path.h" />
     <ClInclude Include="Utilities\String.h" />
